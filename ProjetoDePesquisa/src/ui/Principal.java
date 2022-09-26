@@ -11,10 +11,13 @@ public class Principal {
 		ProjetoDePesquisa projeto = new ProjetoDePesquisa("Projeto");
 		Pesquisador c = new Coordenador("Coordenador");
 		Pesquisador p = new Professor("Carlinhos");
+		
 		c.inserirPesquisador(p);
+		System.out.println(p.getCoordenador().getNome());
 		c.inserirPesquisador(new Professor("Robertão"));
 		Pesquisador ricardo = c.inserirPesquisador(new Coordenador("Ricardão"));
 		projeto.inserirPesquisador(c);
+		
 		System.out.println(ricardo.getCoordenador().getNome());
 		Pesquisador renato = projeto.inserirPesquisador(new Professor("Renatão"));
 		System.out.println(projeto.getValorPago(p));

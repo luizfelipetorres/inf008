@@ -22,10 +22,5 @@ public class Coordenador extends Pesquisador{
 	public float calcularValorPago() {
 		// TODO Auto-generated method stub
 		return 300f * (1 - (getQtdSubordinados() * 0.025f));
-	}
-	
-	
-	
-
-	
+	}	
 }
