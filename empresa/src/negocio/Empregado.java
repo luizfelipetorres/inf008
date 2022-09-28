@@ -1,18 +1,21 @@
 package negocio;
 
-import java.util.List;
 
 public class Empregado extends Pessoa{
 
-	public Empregado(String nome, Chefe chefe) {
-		super(nome, chefe);
+	public Empregado(String nome) {
+		super(nome);
 		// TODO Auto-generated constructor stub
 	}
 
 	@Override
-	public List<Pessoa> getListaEmpregadosAssociados() {
-		// TODO Auto-generated method stub
-		return null;
+	public void getListaEmpregadosAssociados() throws Exception{
+		throw new Exception("Empregado não possui subordinados!");
 	}
+	
+	public void setEmpregadosAssociados(Pessoa p) throws Exception{
+		throw new Exception("Empregado não possui subordinados!");
+	} 
+	
 
 }

@@ -1,18 +1,28 @@
 package negocio;
 
-import java.util.List;
 
 public class Chefe extends Pessoa{
 
-	public Chefe(String nome, Chefe chefe) {
-		super(nome, chefe);
+	public Chefe(String nome) {
+		super(nome);
 		// TODO Auto-generated constructor stub
 	}
 
 	@Override
-	public List<Pessoa> getListaEmpregadosAssociados() {
-		// TODO Auto-generated method stub
-		return null;
+	public void getListaEmpregadosAssociados() throws Exception {
+		for (int i = 0; i < getEmpregadosAssociados().size(); i++) {
+			Pessoa p = getEmpregadosAssociados().get(i);
+			System.out.println(p.getNome());
+			if (p.getClass() == Chefe.class) {
+				p.getListaEmpregadosAssociados();
+			}
+			
+		}
 	}
-
+	
+	@Override
+	public void setEmpregadosAssociados(Pessoa p) throws Exception{
+		p.setCoordenador(this);
+		getEmpregadosAssociados().add(p);
+	}
 }
