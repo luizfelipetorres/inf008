@@ -10,6 +10,7 @@ public class Principal {
 		Pessoa empregado = new Empregado("Antoninho");
 		Pessoa chefe = new Chefe("Renato");
 		
+		raiz.listarCoordenadores();
 		raiz.setEmpregadosAssociados(chefe);
 		chefe.setEmpregadosAssociados(empregado);
 		raiz.getListaEmpregadosAssociados();

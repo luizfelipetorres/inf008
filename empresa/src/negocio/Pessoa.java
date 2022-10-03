@@ -21,10 +21,11 @@ public abstract class Pessoa {
 	public abstract void getListaEmpregadosAssociados() throws Exception;
 	
 	public void listarCoordenadores() {
-		System.out.println(coordenador.getNome());
-		if (this.coordenador.getCoordenador() != null) {
+		if (this.coordenador != null) {
+			System.out.println(coordenador.getNome());
 			this.coordenador.listarCoordenadores();
-		}
+		}else 
+			System.out.printf("%s não possui supervisor!\n", this.getNome());
 	}
 	
 	public String getNome() {
