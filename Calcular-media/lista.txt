@@ -1,0 +1,6 @@
+Luiz, 10.00, 9.00, 10.00, 9.67, Aprovado
+Felipe, 10.00, 7.00, 5.00, 7.33, Aprovado
+Alberto, 1.00, 3.00, 7.00, 3.67, Reprovado
+juvenal , 2.00, 3.00, 5.00, 3.33, Reprovado
+alberto, 9.00, 8.00, 7.00, 8.00, Aprovado
+batata, 1.00, 4.00, 2.00, 2.33, Reprovado

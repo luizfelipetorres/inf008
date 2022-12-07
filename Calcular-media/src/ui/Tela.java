@@ -1,18 +1,27 @@
 package ui;
 
 import java.awt.EventQueue;
+import java.awt.desktop.OpenFilesEvent;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import java.awt.BorderLayout;
+import java.awt.Desktop;
+
 import javax.swing.SwingConstants;
 
+import DAO.FichaAlunoDAO;
+import DAO.FichaAlunoImpl;
 import data.Conexao;
-import negocio.FichaAluno;
+import model.FichaAluno;
 
 import javax.swing.JTextField;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.List;
 import java.awt.event.ActionEvent;
 
 public class Tela {
@@ -50,8 +59,8 @@ public class Tela {
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
-		Conexao conexao = new Conexao("PostgreSql", "localhost", "5433", "POO", "", "root");
-		conexao.conect();
+		Conexao conexao = new Conexao("postgresql", "localhost", "5432", "POO", "postgres", "1234");
+		FichaAlunoDAO dao = new FichaAlunoImpl(conexao);
 		frame = new JFrame();
 		frame.setBounds(100, 100, 328, 255);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -90,18 +99,38 @@ public class Tela {
 		JButton btAdd = new JButton("Add");
 		btAdd.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				FichaAluno aluno = new FichaAluno(
-						tfNome.getText(), 
-						Double.parseDouble(tfP1.getText()), 
-						Double.parseDouble(tfP2.getText()),
-						Double.parseDouble(tfTrabalho.getText())
-				);
+				FichaAluno aluno = new FichaAluno.Builder()
+						.setNome(tfNome.getText())
+						.setProva1(Double.parseDouble(tfP1.getText()))
+						.setProva2(Double.parseDouble(tfP2.getText()))
+						.setTrabalho(Double.parseDouble(tfTrabalho.getText()))
+						.build();
+
+				dao.insert(aluno);
 			}
 		});
 		btAdd.setBounds(10, 138, 89, 23);
 		frame.getContentPane().add(btAdd);
 
 		JButton btListar = new JButton("Listar");
+		btListar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				StringBuilder stringLista = new StringBuilder();
+				List<FichaAluno> list = dao.getAll();
+				list.forEach(ficha -> stringLista.append(ficha.toString()));
+				File f = new File("lista.txt");
+				try {
+					FileWriter writer = new FileWriter(f);
+					writer.write(stringLista.toString());
+					writer.close();
+					Desktop d = Desktop.getDesktop();
+					d.open(f);
+				} catch (IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+			}
+		});
 		btListar.setBounds(173, 138, 89, 23);
 		frame.getContentPane().add(btListar);
 

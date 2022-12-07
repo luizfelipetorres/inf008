@@ -4,6 +4,8 @@
 	<classpathentry kind="src" path="ArvoreGenealogica/src"/>
 	<classpathentry kind="src" path="empresa/src"/>
 	<classpathentry kind="src" path="exercicios_her_pol/src"/>
+	<classpathentry kind="src" path="Forca/src"/>
+	<classpathentry kind="src" path="IngressoCinema/src"/>
 	<classpathentry kind="src" path="ProjetoDePesquisa/src"/>
-	<classpathentry kind="output" path="ArvoreGenealogica/bin"/>
+	<classpathentry kind="output" path="bin"/>
 </classpath>
