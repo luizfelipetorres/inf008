@@ -25,15 +25,12 @@ public class Conexao {
 		this.userName = userName;
 		this.userPassword = userPassword;
 		this.url = "jdbc:" + bd + "://" + host + ":" + port + "/" + bdName;
-		this.con = getConnection();
 	}
 
 	public Connection getConnection() {
 		Connection conn = null;
 		try {
 			conn = DriverManager.getConnection(url, userName, userPassword);
-			Statement stmt = conn.createStatement();
-
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}

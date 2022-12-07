@@ -32,9 +32,6 @@ public class Tela {
 	private JTextField tfP2;
 	private JTextField tfTrabalho;
 
-	/**
-	 * Launch the application.
-	 */
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -48,16 +45,10 @@ public class Tela {
 		});
 	}
 
-	/**
-	 * Create the application.
-	 */
 	public Tela() {
 		initialize();
 	}
 
-	/**
-	 * Initialize the contents of the frame.
-	 */
 	private void initialize() {
 		Conexao conexao = new Conexao("postgresql", "localhost", "5432", "POO", "postgres", "1234");
 		FichaAlunoDAO dao = new FichaAlunoImpl(conexao);
